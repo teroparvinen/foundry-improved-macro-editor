@@ -16,14 +16,16 @@ const windowSizes = {
 Hooks.on("renderMacroConfig", (app, html, data) => {
     const size = windowSizes[game.settings.get("improved-macro-editor", "window-size")];
 
-    app.setPosition({
-        width: size.width,
-        height: size.height
-    });
-    app.setPosition({
-        left: (window.innerWidth - size.width) / 2,
-        top: (window.innerHeight - size.height) / 2
-    });
+    if(!app.rendered){
+        app.setPosition({
+            width: size.width,
+            height: size.height
+        });
+        app.setPosition({
+            left: (window.innerWidth - size.width) / 2,
+            top: (window.innerHeight - size.height) / 2
+        });
+    }
 
     const textarea = html.find('textarea[name="command"]');
     const code = textarea.val();
