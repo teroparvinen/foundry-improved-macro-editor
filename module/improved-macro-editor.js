@@ -16,7 +16,7 @@ const windowSizes = {
 Hooks.on("renderMacroConfig", (app, html, data) => {
     const size = windowSizes[game.settings.get("improved-macro-editor", "window-size")];
 
-    if(!app.rendered){
+    if(!app._submitting){
         app.setPosition({
             width: size.width,
             height: size.height
